@@ -1,0 +1,163 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Create should be able to create multiple folders 1`] = `
+Array [
+  Object {
+    "name": "fruits",
+    "subFolders": Array [
+      Object {
+        "name": "apples",
+        "subFolders": Array [
+          Object {
+            "name": "fuji",
+            "subFolders": Array [],
+          },
+        ],
+      },
+    ],
+  },
+]
+`;
+
+exports[`App Create should be case insensitive 1`] = `
+Array [
+  Object {
+    "name": "fruits",
+    "subFolders": Array [
+      Object {
+        "name": "apples",
+        "subFolders": Array [
+          Object {
+            "name": "fuji",
+            "subFolders": Array [],
+          },
+        ],
+      },
+    ],
+  },
+]
+`;
+
+exports[`App Create should not duplicate 1`] = `
+Array [
+  Object {
+    "name": "fruits",
+    "subFolders": Array [
+      Object {
+        "name": "apples",
+        "subFolders": Array [
+          Object {
+            "name": "fuji",
+            "subFolders": Array [],
+          },
+        ],
+      },
+    ],
+  },
+]
+`;
+
+exports[`App Delete should be able to delete sub folders 1`] = `
+Array [
+  Object {
+    "name": "fruits",
+    "subFolders": Array [
+      Object {
+        "name": "apples",
+        "subFolders": Array [],
+      },
+    ],
+  },
+]
+`;
+
+exports[`App Delete should be able to delete sub folders 2`] = `
+Array [
+  Object {
+    "name": "fruits",
+    "subFolders": Array [],
+  },
+]
+`;
+
+exports[`App Delete should be able to delete sub folders 3`] = `Array []`;
+
+exports[`App List should list sub folders correctly 1`] = `
+"fruits
+  apples
+    fuji"
+`;
+
+exports[`App Move should be able to move a folder to a subfolder 1`] = `
+Array [
+  Object {
+    "name": "fruits",
+    "subFolders": Array [
+      Object {
+        "name": "apples",
+        "subFolders": Array [],
+      },
+    ],
+  },
+  Object {
+    "name": "fuji",
+    "subFolders": Array [],
+  },
+]
+`;
+
+exports[`App Move should be able to move a folder to a subfolder 2`] = `
+Array [
+  Object {
+    "name": "fruits",
+    "subFolders": Array [
+      Object {
+        "name": "apples",
+        "subFolders": Array [
+          Object {
+            "name": "fuji",
+            "subFolders": Array [],
+          },
+        ],
+      },
+    ],
+  },
+]
+`;
+
+exports[`App Move should be able to move a sub folder to a folder 1`] = `
+Array [
+  Object {
+    "name": "fruits",
+    "subFolders": Array [
+      Object {
+        "name": "apples",
+        "subFolders": Array [],
+      },
+    ],
+  },
+  Object {
+    "name": "foods",
+    "subFolders": Array [],
+  },
+]
+`;
+
+exports[`App Move should be able to move a sub folder to a folder 2`] = `
+Array [
+  Object {
+    "name": "foods",
+    "subFolders": Array [
+      Object {
+        "name": "fruits",
+        "subFolders": Array [
+          Object {
+            "name": "apples",
+            "subFolders": Array [],
+          },
+        ],
+      },
+    ],
+  },
+]
+`;
