@@ -1,5 +1,6 @@
 import { Folder } from '../Folder'
 import { Command } from './Command'
+import { CommandError } from './CommandError'
 
 export class Delete implements Command {
   private readonly path: string[]
@@ -11,9 +12,11 @@ export class Delete implements Command {
   del(paths: string[], folders: Folder[]): void {
     const [path, ...rest] = paths
 
-    const indexFound = folders.findIndex((f) => f.name === path)
+    const indexFound = folders.findIndex(f => f.name === path)
     if (indexFound === -1) {
-      throw new Error(`Cannot delete ${this.args} - ${path} does not exist`)
+      throw new CommandError(
+        `Cannot delete ${this.args} - ${path} does not exist`,
+      )
     }
 
     if (rest.length !== 0) {

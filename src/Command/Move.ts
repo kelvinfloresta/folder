@@ -1,5 +1,6 @@
 import { Folder } from '../Folder'
 import { Command } from './Command'
+import { CommandError } from './CommandError'
 
 export class Move implements Command {
   private readonly origin: string[]
@@ -15,7 +16,7 @@ export class Move implements Command {
     const found = folders.find(f => f.name === path)
 
     if (!found) {
-      throw new Error(`Path not found`)
+      throw new CommandError(`Path not found`)
     }
 
     if (rest.length > 0) {
@@ -30,7 +31,7 @@ export class Move implements Command {
     const indexFound = folders.findIndex(f => f.name === path)
 
     if (indexFound === -1) {
-      throw new Error(`Path not found`)
+      throw new CommandError(`Path not found`)
     }
 
     const folderFound = folders[indexFound]

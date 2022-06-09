@@ -1,4 +1,5 @@
 import { Command } from './Command/Command'
+import { CommandError } from './Command/CommandError'
 import { Create } from './Command/Create'
 import { Delete } from './Command/Delete'
 import { List } from './Command/List'
@@ -24,7 +25,7 @@ export class App {
         return new Delete(args[0])
     }
 
-    throw new Error(`Unknow command: ${command}`)
+    throw new CommandError(`Unknow command: ${command}`)
   }
 
   public execute(rawCommand: string) {
@@ -37,6 +38,10 @@ export class App {
     try {
       command.execute(this.folders)
     } catch (e) {
+      if (e instanceof CommandError) {
+        return console.error(e.message)
+      }
+
       console.error(e)
     }
   }
