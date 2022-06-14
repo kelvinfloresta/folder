@@ -1,9 +1,13 @@
 import { App } from './App'
-import fs from 'fs/promises'
 import { Console } from './Logger/Console'
+import { InteractiveApp } from './InteractiveApp'
+import { BatchApp } from './BatchApp'
 
-fs.readFile('input', 'utf-8').then(file => {
-  const app = new App([], new Console())
-  const commands = file.split(/\r?\n/)
-  commands.forEach(app.execute)
-})
+const app = new App([], new Console())
+const isInteractive = process.argv.some(arg => arg === '-i')
+
+if (isInteractive) {
+  new InteractiveApp(app).start()
+} else {
+  new BatchApp(app).start()
+}
