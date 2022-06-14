@@ -37,6 +37,7 @@ export class App {
     const command = this.buildCommand(rawCommand)
 
     try {
+      this.logger.info(rawCommand)
       command.execute(this.folders)
     } catch (e: any) {
       if (e instanceof CommandError) {
