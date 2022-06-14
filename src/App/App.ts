@@ -12,10 +12,6 @@ export class App {
   }
 
   public execute(rawCommand: string) {
-    if (rawCommand === '') {
-      return
-    }
-
     const command = this.commandBuilder.build(rawCommand)
 
     try {
