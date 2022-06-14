@@ -1,4 +1,4 @@
-import { Folder } from '../Folder'
+import { Folder } from './Folder'
 import { Command } from './Command'
 
 export class Create implements Command {

@@ -1,9 +1,9 @@
 import { Logger } from '../Logger/Logger'
-import { CommandError } from './Command/CommandError'
-import { Create } from './Command/Create'
-import { Delete } from './Command/Delete'
-import { List } from './Command/List'
-import { Move } from './Command/Move'
+import { CommandError } from './CommandError'
+import { Create } from './Create'
+import { Delete } from './Delete'
+import { List } from './List'
+import { Move } from './Move'
 
 export class CommandBuilder {
   constructor(private readonly logger: Logger) {}

@@ -1,4 +1,4 @@
-import { CommandError } from '../Domain/Command/CommandError'
+import { CommandError } from '../Domain/CommandError'
 import { CommandBuilder } from '../Domain/CommandBuilder'
 import { Folder } from '../Domain/Folder'
 import { Logger } from '../Logger/Logger'
