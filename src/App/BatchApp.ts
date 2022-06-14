@@ -7,7 +7,7 @@ export class BatchApp {
   async start() {
     const file = await fs.readFile('input', 'utf-8')
 
-    const commands = file.split(/\r?\n/)
+    const commands = file.split(/\r?\n/).filter(line => line !== '')
     commands.forEach(this.app.execute)
   }
 }
