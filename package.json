@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node src/index.ts",
+    "start:interactive": "ts-node src/index.ts -i",
     "test": "jest"
   },
   "keywords": [],
