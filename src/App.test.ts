@@ -98,11 +98,12 @@ describe('App', () => {
     })
 
     it('should fail if folder not found', () => {
-      const sut = makeSut()
-      const fn = () => sut.execute('DELETE fruits')
+      const stdout = jest.fn()
+      const sut = new App([], stdout)
+      sut.execute('DELETE fruits')
 
       const expectedMessage = `Cannot delete fruits - fruits does not exist`
-      expect(fn).toThrowError(expectedMessage)
+      expect(stdout).toHaveBeenCalledWith(expectedMessage)
     })
   })
 

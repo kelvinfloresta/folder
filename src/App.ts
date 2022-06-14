@@ -39,10 +39,10 @@ export class App {
       command.execute(this.folders)
     } catch (e) {
       if (e instanceof CommandError) {
-        return console.error(e.message)
+        return this.stdout(e.message)
       }
 
-      console.error(e)
+      this.stdout(e)
     }
   }
 }
