@@ -1,11 +1,11 @@
-import { Command } from './Command/Command'
-import { CommandError } from './Command/CommandError'
-import { Create } from './Command/Create'
-import { Delete } from './Command/Delete'
-import { List } from './Command/List'
-import { Move } from './Command/Move'
-import { Folder } from './Folder'
-import { Logger } from './Logger/Logger'
+import { Command } from '../Command/Command'
+import { CommandError } from '../Command/CommandError'
+import { Create } from '../Command/Create'
+import { Delete } from '../Command/Delete'
+import { List } from '../Command/List'
+import { Move } from '../Command/Move'
+import { Folder } from '../Folder'
+import { Logger } from '../Logger/Logger'
 
 export class App {
   constructor(public folders: Folder[], private readonly logger: Logger) {

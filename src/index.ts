@@ -1,7 +1,7 @@
-import { App } from './App'
+import { App } from './App/App'
+import { BatchApp } from './App/BatchApp'
+import { InteractiveApp } from './App/InteractiveApp'
 import { Console } from './Logger/Console'
-import { InteractiveApp } from './InteractiveApp'
-import { BatchApp } from './BatchApp'
 
 const app = new App([], new Console())
 const isInteractive = process.argv.some(arg => arg === '-i')

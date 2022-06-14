@@ -1,6 +1,6 @@
 import { App } from './App'
-import { CommandError } from './Command/CommandError'
-import { SpyLogger } from './__fixtures__/SpyLogger'
+import { CommandError } from '../Command/CommandError'
+import { SpyLogger } from '../__fixtures__/SpyLogger'
 
 /**
  * SUT means `System Under Test`
