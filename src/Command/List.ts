@@ -1,4 +1,4 @@
-import { Folder } from '../Folder'
+import { Folder } from '../Domain/Folder'
 import { Command } from './Command'
 
 export class List implements Command {

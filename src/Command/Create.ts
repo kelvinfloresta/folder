@@ -1,4 +1,4 @@
-import { Folder } from '../Folder'
+import { Folder } from '../Domain/Folder'
 import { Command } from './Command'
 
 export class Create implements Command {
@@ -14,7 +14,7 @@ export class Create implements Command {
       return
     }
 
-    const existingFolder = baseFolders.find((f) => f.name === next.name)
+    const existingFolder = baseFolders.find(f => f.name === next.name)
 
     if (existingFolder) {
       return this.addFolder(rest, existingFolder.subFolders)
@@ -30,7 +30,7 @@ export class Create implements Command {
       return folders.push({ name: this.newFolders[0], subFolders: [] })
     }
 
-    const newFolders = this.newFolders.map<Folder>((f) => ({
+    const newFolders = this.newFolders.map<Folder>(f => ({
       name: f,
       subFolders: [],
     }))

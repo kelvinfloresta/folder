@@ -4,7 +4,7 @@ import { Create } from '../Command/Create'
 import { Delete } from '../Command/Delete'
 import { List } from '../Command/List'
 import { Move } from '../Command/Move'
-import { Folder } from '../Folder'
+import { Folder } from '../Domain/Folder'
 import { Logger } from '../Logger/Logger'
 
 export class App {
