@@ -1,5 +1,7 @@
 # Folder
 
+![Test](https://github.com/kelvin/folder/actions/workflows/test.yml/badge.svg)
+
 ## 1. Install dependencies
 
 ```sh
