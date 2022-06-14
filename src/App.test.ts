@@ -1,4 +1,6 @@
 import { App } from './App'
+import { CommandError } from './Command/CommandError'
+import { SpyLogger } from './__fixtures__/SpyLogger'
 
 /**
  * SUT means `System Under Test`
@@ -6,7 +8,7 @@ import { App } from './App'
  * [See more](https://en.wikipedia.org/wiki/System_under_test)
  */
 function makeSut() {
-  return new App([])
+  return new App([], new SpyLogger())
 }
 
 describe('App', () => {
@@ -48,27 +50,27 @@ describe('App', () => {
 
   describe('List', () => {
     it('should list all folders', () => {
-      const stdout = jest.fn()
-      const sut = new App([], stdout)
+      const spyLogger = new SpyLogger()
+      const sut = new App([], spyLogger)
       sut.execute('CREATE fruits')
       sut.execute('CREATE vegetables')
 
       sut.execute('LIST')
 
       const expected = `fruits\nvegetables`
-      expect(stdout).toHaveBeenCalledWith(expected)
+      expect(spyLogger.info).toHaveBeenCalledWith(expected)
     })
 
     it('should list sub folders correctly', () => {
-      const stdout = jest.fn()
-      const sut = new App([], stdout)
+      const spyLogger = new SpyLogger()
+      const sut = new App([], spyLogger)
 
       sut.execute('CREATE fruits/apples/fuji')
 
       sut.execute('LIST')
 
-      expect(stdout).toHaveBeenCalledTimes(1)
-      expect(stdout.mock.lastCall[0]).toMatchSnapshot()
+      expect(spyLogger.info).toHaveBeenCalledTimes(1)
+      expect(spyLogger.info.mock.lastCall[0]).toMatchSnapshot()
     })
   })
 
@@ -98,12 +100,14 @@ describe('App', () => {
     })
 
     it('should fail if folder not found', () => {
-      const stdout = jest.fn()
-      const sut = new App([], stdout)
+      const spyLogger = new SpyLogger()
+      const sut = new App([], spyLogger)
       sut.execute('DELETE fruits')
 
       const expectedMessage = `Cannot delete fruits - fruits does not exist`
-      expect(stdout).toHaveBeenCalledWith(expectedMessage)
+
+      expect(spyLogger.warn).toHaveBeenCalledTimes(1)
+      expect(spyLogger.warn).toHaveBeenCalledWith(expectedMessage)
     })
   })
 

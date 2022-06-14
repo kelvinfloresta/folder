@@ -5,9 +5,10 @@ import { Delete } from './Command/Delete'
 import { List } from './Command/List'
 import { Move } from './Command/Move'
 import { Folder } from './Folder'
+import { Logger } from './Logger/Logger'
 
 export class App {
-  constructor(public folders: Folder[], private readonly stdout = console.log) {
+  constructor(public folders: Folder[], private readonly logger: Logger) {
     this.execute = this.execute.bind(this)
   }
 
@@ -18,7 +19,7 @@ export class App {
       case 'create':
         return new Create(args[0])
       case 'list':
-        return new List(this.stdout)
+        return new List(this.logger.info)
       case 'move':
         return new Move(args[0], args[1])
       case 'delete':
@@ -37,12 +38,12 @@ export class App {
 
     try {
       command.execute(this.folders)
-    } catch (e) {
+    } catch (e: any) {
       if (e instanceof CommandError) {
-        return this.stdout(e.message)
+        return this.logger.warn(e.message)
       }
 
-      this.stdout(e)
+      this.logger.error(e)
     }
   }
 }
