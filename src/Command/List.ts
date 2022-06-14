@@ -16,6 +16,8 @@ export class List implements Command {
           return `${separator}${f.name}`
         }
 
+        f.subFolders.sort((a, b) => a.name.localeCompare(b.name))
+
         const subFolders = this.print(f.subFolders, subSeparator)
 
         return `${separator}${f.name}\n${subFolders}`
