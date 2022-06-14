@@ -1,5 +1,5 @@
 import { App } from './App'
-import { CommandError } from '../Command/CommandError'
+import { CommandError } from '../Domain/Command/CommandError'
 import { SpyLogger } from '../__fixtures__/SpyLogger'
 
 /**
