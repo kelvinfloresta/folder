@@ -1,6 +1,5 @@
 import readline from 'readline'
 import { App } from './App'
-import { Console } from './Logger/Console'
 
 export class InteractiveApp {
   constructor(private readonly app: App) {}
