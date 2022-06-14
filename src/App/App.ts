@@ -1,32 +1,14 @@
-import { Command } from '../Domain/Command/Command'
 import { CommandError } from '../Domain/Command/CommandError'
-import { Create } from '../Domain/Command/Create'
-import { Delete } from '../Domain/Command/Delete'
-import { List } from '../Domain/Command/List'
-import { Move } from '../Domain/Command/Move'
+import { CommandBuilder } from '../Domain/CommandBuilder'
 import { Folder } from '../Domain/Folder'
 import { Logger } from '../Logger/Logger'
 
 export class App {
+  private readonly commandBuilder: CommandBuilder
+
   constructor(public folders: Folder[], private readonly logger: Logger) {
     this.execute = this.execute.bind(this)
-  }
-
-  private buildCommand(rawCommand: string): Command {
-    const [command, ...args] = rawCommand.split(' ')
-
-    switch (command.toLowerCase()) {
-      case 'create':
-        return new Create(args[0])
-      case 'list':
-        return new List(this.logger.info)
-      case 'move':
-        return new Move(args[0], args[1])
-      case 'delete':
-        return new Delete(args[0])
-    }
-
-    throw new CommandError(`Unknow command: ${command}`)
+    this.commandBuilder = new CommandBuilder(logger)
   }
 
   public execute(rawCommand: string) {
@@ -34,7 +16,7 @@ export class App {
       return
     }
 
-    const command = this.buildCommand(rawCommand)
+    const command = this.commandBuilder.build(rawCommand)
 
     try {
       this.logger.info(rawCommand)
