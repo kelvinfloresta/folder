@@ -9,22 +9,23 @@ export class List implements Command {
   }
 
   private print(folders: Folder[], separator: string): string {
-    const subSeparator = separator + separator
+    const subSeparator = separator + this.separator
     return folders
-      .map((f) => {
+      .map(f => {
         if (f.subFolders.length === 0) {
-          return f.name
+          return `${separator}${f.name}`
         }
 
         const subFolders = this.print(f.subFolders, subSeparator)
 
-        return `${f.name}\n${separator}${subFolders}`
+        return `${separator}${f.name}\n${subFolders}`
       })
       .join('\n')
   }
 
   execute(folders: Folder[]): void {
-    const output = this.print(folders, this.separator)
+    const initialSeparator = ''
+    const output = this.print(folders, initialSeparator)
     this.stdout(output)
   }
 }
