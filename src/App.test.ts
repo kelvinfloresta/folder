@@ -69,7 +69,6 @@ describe('App', () => {
 
       sut.execute('LIST')
 
-      expect(spyLogger.info).toHaveBeenCalledTimes(1)
       expect(spyLogger.info.mock.lastCall[0]).toMatchSnapshot()
     })
   })
