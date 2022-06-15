@@ -118,9 +118,9 @@ describe('App', () => {
       sut.execute('MOVE fruits foods')
 
       expect(sut.folders).toHaveLength(1)
-      expect(sut.folders[0].name).toEqual('foods')
-      expect(sut.folders[0].subFolders).toHaveLength(1)
-      expect(sut.folders[0].subFolders[0].name).toEqual('fruits')
+      expect(sut.folders[0]?.name).toEqual('foods')
+      expect(sut.folders[0]?.subFolders).toHaveLength(1)
+      expect(sut.folders[0]?.subFolders[0]?.name).toEqual('fruits')
     })
 
     it('should be able to move a folder to a subfolder', () => {

@@ -27,11 +27,11 @@ export class Move implements Command {
     const [path, ...rest] = paths
     const indexFound = folders.findIndex(f => f.name === path)
 
-    if (indexFound === -1) {
+    const folderFound = folders[indexFound]
+    if (folderFound === undefined) {
       throw new CommandError(`Path not found`)
     }
 
-    const folderFound = folders[indexFound]
     if (rest.length > 0) {
       return this.findAndRemove(rest, folderFound.subFolders)
     }

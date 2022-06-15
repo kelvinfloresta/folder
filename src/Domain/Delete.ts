@@ -9,14 +9,16 @@ export class Delete implements Command {
     const [path, ...rest] = paths
 
     const indexFound = folders.findIndex(f => f.name === path)
-    if (indexFound === -1) {
+    const folderFound = folders[indexFound]
+
+    if (folderFound === undefined) {
       throw new CommandError(
-        `Cannot delete ${this.args} - ${path} does not exist`,
+        `Cannot delete ${this.path.join('/')} - ${path} does not exist`,
       )
     }
 
     if (rest.length !== 0) {
-      return this.del(rest, folders[indexFound].subFolders)
+      return this.del(rest, folderFound.subFolders)
     }
 
     folders.splice(indexFound, 1)
