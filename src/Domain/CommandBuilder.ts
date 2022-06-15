@@ -14,7 +14,11 @@ export class CommandBuilder {
       throw new InvalidPath(args)
     }
 
-    if (['', '/', '\\'].includes(args)) {
+    if (['', '/'].includes(args)) {
+      throw new InvalidPath(args)
+    }
+
+    if (args.includes('\\')) {
       throw new InvalidPath(args)
     }
 
