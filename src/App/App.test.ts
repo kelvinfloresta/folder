@@ -7,7 +7,7 @@ import { SpyLogger } from '../__fixtures__/SpyLogger'
  * [See more](https://en.wikipedia.org/wiki/System_under_test)
  */
 function makeSut() {
-  return new App([], new SpyLogger())
+  return new App(new SpyLogger())
 }
 
 describe('App', () => {
@@ -50,7 +50,7 @@ describe('App', () => {
   describe('List', () => {
     it('should list all folders', () => {
       const spyLogger = new SpyLogger()
-      const sut = new App([], spyLogger)
+      const sut = new App(spyLogger)
       sut.execute('CREATE fruits')
       sut.execute('CREATE vegetables')
 
@@ -62,7 +62,7 @@ describe('App', () => {
 
     it('should list sub folders correctly', () => {
       const spyLogger = new SpyLogger()
-      const sut = new App([], spyLogger)
+      const sut = new App(spyLogger)
 
       sut.execute('CREATE fruits/apples/fuji')
 
@@ -99,7 +99,7 @@ describe('App', () => {
 
     it('should fail if folder not found', () => {
       const spyLogger = new SpyLogger()
-      const sut = new App([], spyLogger)
+      const sut = new App(spyLogger)
       sut.execute('DELETE fruits')
 
       const expectedMessage = `Cannot delete fruits - fruits does not exist`

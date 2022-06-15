@@ -4,9 +4,10 @@ import { Folder } from '../Domain/Folder'
 import { Logger } from '../Logger/Logger'
 
 export class App {
+  public readonly folders: Folder[] = []
   private readonly commandBuilder: CommandBuilder
 
-  constructor(public folders: Folder[], private readonly logger: Logger) {
+  constructor(private readonly logger: Logger) {
     this.execute = this.execute.bind(this)
     this.commandBuilder = new CommandBuilder(logger)
   }
