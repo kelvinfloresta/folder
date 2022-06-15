@@ -2,6 +2,7 @@ import { Logger } from '../Logger/Logger'
 import { CommandError } from './CommandError'
 import { Create } from './Create'
 import { Delete } from './Delete'
+import { InvalidPath } from './InvalidPath'
 import { List } from './List'
 import { Move } from './Move'
 
@@ -10,11 +11,11 @@ export class CommandBuilder {
 
   private static parsePath(args: string | undefined): string[] {
     if (args === undefined) {
-      throw new Error('Invalid Command')
+      throw new InvalidPath(args)
     }
 
     if (['', '/', '\\'].includes(args)) {
-      throw new Error('Invalid Command')
+      throw new InvalidPath(args)
     }
 
     return args.split('/')
