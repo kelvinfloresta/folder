@@ -3,13 +3,10 @@ import { Command } from './Command'
 import { CommandError } from './CommandError'
 
 export class Move implements Command {
-  private readonly origin: string[]
-  private readonly destination: string[]
-
-  constructor(origin: string, destination: string) {
-    this.origin = origin.split('/')
-    this.destination = destination.split('/')
-  }
+  constructor(
+    private readonly origin: string[],
+    private readonly destination: string[],
+  ) {}
 
   findFolder(paths: string[], folders: Folder[]): Folder {
     const [path, ...rest] = paths

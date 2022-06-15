@@ -3,11 +3,7 @@ import { Command } from './Command'
 import { CommandError } from './CommandError'
 
 export class Delete implements Command {
-  private readonly path: string[]
-
-  constructor(private readonly args: string) {
-    this.path = args.split('/')
-  }
+  constructor(private readonly path: string[]) {}
 
   del(paths: string[], folders: Folder[]): void {
     const [path, ...rest] = paths

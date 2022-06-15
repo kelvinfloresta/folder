@@ -2,11 +2,7 @@ import { Folder } from './Folder'
 import { Command } from './Command'
 
 export class Create implements Command {
-  private readonly newFolders: string[]
-
-  constructor(arg: string) {
-    this.newFolders = arg.split('/')
-  }
+  constructor(private readonly newFolders: string[]) {}
 
   private addFolder(newFolders: Folder[], baseFolders: Folder[]): void {
     const [next, ...rest] = newFolders
@@ -26,10 +22,6 @@ export class Create implements Command {
   }
 
   execute(folders: Folder[]) {
-    if (this.newFolders.length === 1) {
-      return folders.push({ name: this.newFolders[0], subFolders: [] })
-    }
-
     const newFolders = this.newFolders.map<Folder>(f => ({
       name: f,
       subFolders: [],
